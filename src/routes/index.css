@@ -1,0 +1,634 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+/* Dashboard Styles */
+.dashboard {
+  text-align: left;
+  width: 100%;
+}
+
+/* Twitter-like header styling */
+.twitter-header {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 0.75rem;
+}
+
+.header-content {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.twitter-header h1 {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  color: #1d9bf0; /* Twitter blue */
+  gap: 8px;
+}
+
+.twitter-logo {
+  width: 28px;
+  height: 28px;
+  fill: #1d9bf0;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Add smaller avatar styles for the header */
+.header-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #1d9bf0; /* Twitter blue */
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.header-avatar-img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #eaeaea;
+}
+
+.username {
+  font-weight: 600;
+  color: #0f1419;
+}
+
+/* Sign out icon button styling - needs to be more specific than general button styles */
+.user-info button.signout-button {
+  background-color: transparent;
+  color: #536471; /* Twitter-like text color */
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  transition: background-color 0.2s;
+}
+
+.user-info button.signout-button:hover {
+  background-color: rgba(15, 20, 25, 0.1);
+  color: #0f1419;
+}
+
+.user-info button.signout-button svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* General button style (not applied to signout-button) */
+.user-info button:not(.signout-button) {
+  background-color: #e11d48;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 9999px; /* Full rounded corners like Twitter */
+  border: none;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-weight: 600;
+}
+
+.user-info button:hover {
+  background-color: #be123c;
+}
+
+/* Twitter-like header replaces the original dashboard header */
+
+.dashboard main {
+  padding: 0;
+}
+
+/* Post Creation Styles */
+.post-creation {
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid #eaeaea;
+  border-radius: 16px;
+  margin-bottom: 20px;
+  background-color: white;
+}
+
+.profile-picture {
+  min-width: 48px;
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: #1d9bf0; /* Twitter blue */
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.avatar-img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #eaeaea;
+}
+
+.post-form {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.post-form textarea {
+  flex: 1 1 0;
+  min-height: 80px;
+  max-width: 380px;
+  padding: 12px 0;
+  border: none;
+  resize: none;
+  font-size: 1rem;
+  border-bottom: 1px solid #eaeaea;
+  margin-bottom: 8px;
+  font-family: inherit;
+  text-transform: uppercase; /* Make text appear as ALL CAPS while typing */
+}
+
+.post-form textarea:focus {
+  outline: none;
+}
+
+.post-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+  gap: 8px;
+}
+
+.post-item .post-actions {
+  justify-content: flex-start;
+  margin-top: 8px;
+  padding-left: 0;
+}
+
+/* Like Button Styles */
+
+.post-actions .like-button {
+  display: inline-flex;
+  align-items: center;
+  background: none !important;
+  border: none;
+  padding: 0;
+  margin-left: 0;
+  cursor: pointer;
+  transition: color 0.15s ease-in-out;
+  color: inherit;
+  outline: none; /* Remove focus outline */
+}
+
+.post-actions .like-button:focus {
+  outline: none; /* Ensure no outline on focus */
+}
+
+/* Add the same hover effects to focus state */
+.post-actions .like-button:focus .heart-icon:not(.filled) {
+  stroke: rgb(249, 24, 128);
+}
+
+.post-actions .like-button:focus .heart-icon {
+  transform: scale(1.1);
+  transition: transform 0.15s ease-in-out;
+}
+
+.post-actions .like-button:hover {
+  background: none !important;
+}
+
+.post-actions .like-button:hover .heart-icon:not(.filled) {
+  stroke: rgb(249, 24, 128);
+}
+
+.post-actions .like-button:active {
+  background: none !important;
+}
+
+.post-actions .like-button:disabled {
+  opacity: 0.6;
+  background: none !important;
+}
+
+.heart-icon {
+  display: flex;
+  line-height: 0;
+  margin-right: 2px;
+}
+
+.heart-icon.filled {
+  fill: rgb(249, 24, 128);
+  animation: heart-pulse 0.3s ease-in-out;
+}
+
+@keyframes heart-pulse {
+  0% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.2);
+  }
+  50% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.heart-icon path {
+  transition:
+    fill 0.2s,
+    stroke 0.2s;
+}
+
+/* Create a subtle hover effect on just the heart icon */
+.post-actions .like-button:hover .heart-icon {
+  transform: scale(1.1);
+  transition: transform 0.15s ease-in-out;
+}
+
+.like-count {
+  font-size: 0.85rem;
+  color: #536471;
+  margin-left: 1px;
+}
+
+.post-actions .like-button.liked .like-count {
+  color: rgb(249, 24, 128);
+}
+
+.char-count {
+  color: #6e767d;
+  font-size: 0.875rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.keyboard-hint {
+  font-size: 0.75rem;
+  color: #8899a6;
+  margin-top: 4px;
+}
+
+/* Hide keyboard hint on touch devices */
+@media (hover: none) and (pointer: coarse) {
+  .keyboard-hint {
+    display: none;
+  }
+}
+
+.post-actions button:not(.like-button) {
+  background-color: #1d9bf0; /* Twitter blue */
+  color: white;
+  padding: 8px 16px;
+  border-radius: 9999px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.post-actions button:not(.like-button):hover {
+  background-color: #1a8cd8;
+}
+
+.post-actions button:not(.like-button):disabled {
+  background-color: #8ecdf8;
+}
+
+/* Posts List Styles */
+.posts-container {
+  margin-top: 24px;
+}
+
+.posts-container h2 {
+  font-size: 1.5rem;
+  margin-bottom: 16px;
+  color: #0f1419;
+  border-bottom: 1px solid #eaeaea;
+  padding-bottom: 8px;
+}
+
+/* Refresh button removed */
+
+.posts-list {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #eaeaea;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.post-item {
+  display: flex;
+  padding: 16px;
+  border-bottom: 1px solid #eaeaea;
+  background-color: white;
+  transition:
+    background-color 0.2s,
+    opacity 0.3s ease;
+}
+
+/* Styling for posts that are still saving */
+.post-item.saving {
+  opacity: 0.7;
+  position: relative;
+}
+
+.post-item.saving::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(to right, transparent, #1d9bf0, transparent);
+  animation: loading 1.5s infinite ease-in-out;
+}
+
+@keyframes loading {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.post-item:hover {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.post-avatar {
+  min-width: 48px;
+  margin-right: 16px;
+}
+
+.avatar-placeholder {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: #eaeaea;
+}
+
+.post-content {
+  flex-grow: 1;
+}
+
+.post-header {
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 4px;
+}
+
+.post-author {
+  font-weight: 700;
+  margin-right: 4px;
+  color: #0f1419;
+}
+
+.post-time {
+  color: #536471;
+  font-size: 0.875rem;
+  position: relative;
+  padding-left: 4px;
+}
+
+.post-time:before {
+  content: "·";
+  position: absolute;
+  left: -1px;
+}
+
+.post-message {
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  margin-bottom: 2px;
+  font-size: 0.95rem;
+  text-transform: uppercase; /* Make all bleats appear in ALL CAPS */
+}
+
+.loading-posts,
+.error-message,
+.no-posts {
+  padding: 20px;
+  text-align: center;
+  color: #6e767d;
+  border: 1px solid #eaeaea;
+  border-radius: 16px;
+  background-color: white;
+}
+
+.error-message {
+  color: #e11d48;
+}
+
+/* Original Vite styles */
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+/* Loading animation styles */
+.loading-container {
+  display: flex;
+  flex-grow: 1;
+  margin: auto;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading-logo {
+  width: 100px;
+  height: auto;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.6;
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0.6;
+    transform: scale(0.9);
+  }
+}
+
+/* Login screen styles */
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.login-container h2 {
+  margin: 1.5rem 0;
+  color: #333;
+}
+
+.login-button {
+  background-color: #1d9bf0;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 9999px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 1rem;
+  transition: background-color 0.2s;
+}
+
+.login-button:hover {
+  background-color: #1a8cd8;
+}
+
+.saving-indicator {
+  color: #1d9bf0;
+  font-style: italic;
+  font-size: 0.85em;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+
+.action-container {
+  display: flex;
+  align-items: center;
+}
+
+.micro-indicator {
+  margin-left: 8px;
+  color: #1d9bf0;
+  font-size: 0.75rem;
+  animation: spin 1.5s infinite linear;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Like button style while pending */
+.like-button.liking {
+  position: relative;
+  overflow: hidden;
+}
+
+.like-button.liking::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(to right, transparent, #f91880, transparent);
+  animation: liking-pulse 1s infinite ease-in-out;
+}
+
+@keyframes liking-pulse {
+  0% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.3;
+  }
+}

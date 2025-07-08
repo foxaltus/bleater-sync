@@ -6,6 +6,8 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
+import { AuthProvider } from "../lib/auth";
+import "./__root.css";
 
 export const Route = createRootRoute({
   head: () => ({
@@ -18,7 +20,14 @@ export const Route = createRootRoute({
         content: "width=device-width, initial-scale=1",
       },
       {
-        title: "TanStack Start Starter",
+        title: "Bleater",
+      },
+    ],
+    links: [
+      {
+        rel: "icon",
+        type: "image/png",
+        href: import.meta.env.BASE_URL + "logo.png",
       },
     ],
   }),
@@ -40,7 +49,10 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
         <HeadContent />
       </head>
       <body>
-        {children}
+        {/* Wrap children in AuthProvider to provide authentication context */}
+        <AuthProvider>
+          <div id="root">{children}</div>
+        </AuthProvider>
         <Scripts />
       </body>
     </html>
