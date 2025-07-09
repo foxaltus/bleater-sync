@@ -37,7 +37,7 @@ export default function Post({ post }: Readonly<PostProps>) {
         <div className="post-message">{post.message}</div>
         <div className="post-actions">
           <div className="action-container">
-            <LikeButton likes={post.likes} />
+            <LikeButton postId={post.id} likes={post.likes} />
           </div>
         </div>
       </div>
