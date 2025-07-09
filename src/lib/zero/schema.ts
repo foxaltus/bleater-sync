@@ -75,5 +75,15 @@ export const permissions = definePermissions<AuthData, Schema>(schema, () => {
         select: [allowIfLoggedIn],
       },
     },
+    profiles: {
+      row: {
+        select: [allowIfLoggedIn],
+      },
+    },
+    likes: {
+      row: {
+        select: [allowIfLoggedIn],
+      },
+    },
   } satisfies PermissionsConfig<AuthData, Schema>;
 });
