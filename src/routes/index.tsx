@@ -1,18 +1,27 @@
 import { createFileRoute, useRouter } from "@tanstack/react-router";
-import { useAuth } from "../lib/useAuth";
+import { useAuth } from "../lib/auth/useAuth";
 import "./index.css";
 
 export const Route = createFileRoute("/")({
   component: Home,
+  validateSearch: (search: Record<string, unknown>) => {
+    return {
+      error: search.error as string | undefined,
+    };
+  },
 });
 
 function Home() {
+  const { error } = Route.useSearch();
   const { user, loading, signOut } = useAuth();
   const router = useRouter();
 
   // Redirect to login if user is not authenticated
   if (!loading && !user) {
-    router.navigate({ to: "/auth/login", search: { auto_login: "on" } });
+    router.navigate({
+      to: "/auth/login",
+      search: { auto_login: error ? "off" : "on" },
+    });
   }
 
   // Show nothing while loading or redirecting

@@ -7,7 +7,7 @@ const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 // Check for missing environment variables
 if (!supabaseUrl || !supabaseAnonKey) {
   throw new Error(
-    "Missing Supabase environment variables. Check your .env.local file."
+    "Missing Supabase environment variables. Check your .env file."
   );
 }
 
