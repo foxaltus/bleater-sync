@@ -8,10 +8,17 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
-dist
-dist-ssr
 *.local
 .env
+.output
+.nitro
+.tanstack
+.netlify
+/dist/
+/build/
+/api/
+/server/build
+/public/build# Sentry Config File
 
 # Editor directories and files
 .vscode/*

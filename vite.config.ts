@@ -6,5 +6,5 @@ export default defineConfig({
   server: {
     port: 3000,
   },
-  plugins: [tsConfigPaths(), tanstackStart({ spa: { enabled: true } })],
+  plugins: [tsConfigPaths(), tanstackStart({ target: "netlify", spa: { enabled: true } })],
 });
