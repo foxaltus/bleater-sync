@@ -43,6 +43,33 @@ export function createMutators(authData: AuthData | undefined) {
         await tx.mutate.likes.delete(like);
       },
     },
+    post: {
+      add: async (
+        tx,
+        {id, message} : { id: string, message: string }
+      ) => {
+        if (!authData) {
+          throw new Error('Not authenticated');
+        }
+        if (!message) {
+          throw new Error('Message cannot be empty');
+        }
+        if (message.length > 280) {
+          throw new Error('Message exceeds 280 characters');
+        }
+        try {
+          await tx.mutate.post.insert({
+            id: id,
+            user_id: authData.sub,
+            message: message,
+            created_at: Date.now(),
+          });
+        } catch (err) {
+          console.error('error posting', err);
+          throw err;
+        }
+      },
+    }
   } as const satisfies CustomMutatorDefs<typeof schema>;
 }
 
