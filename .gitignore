@@ -13,7 +13,7 @@ node_modules
 .output
 .nitro
 .tanstack
-.netlify
+.netlify/*/**
 /dist/
 /build/
 /api/
