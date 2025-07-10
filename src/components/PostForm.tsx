@@ -2,7 +2,7 @@ import { useZero } from "@rocicorp/zero/react";
 import { useState } from "react";
 import { Schema } from "../lib/zero/schema";
 import type { Mutators } from "../lib/zero/mutators";
-import { nanoid } from "nanoid";
+import { v4 as uuidv4 } from "uuid";
 
 // Utility function to detect touch devices
 function isTouchDevice() {
@@ -23,7 +23,7 @@ export default function PostForm() {
     const message = postText.trim();
     z.mutate.post
       .add({
-        id: nanoid(),
+        id: uuidv4(),
         message,
       })
       .server.catch((err) => {
