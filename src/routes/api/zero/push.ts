@@ -7,7 +7,7 @@ import { schema } from "../../../lib/zero/schema";
 import { createMutators } from "../../../lib/zero/mutators";
 
 const pgURL = process.env.ZERO_UPSTREAM_DB;
-if (!pgURL) throw new Error('PG_URL is required');
+if (!pgURL) throw new Error('ZERO_UPSTREAM_DB is required');
 
 const processor = new PushProcessor(
   new ZQLDatabase(new PostgresJSConnection(postgres(pgURL)), schema),
