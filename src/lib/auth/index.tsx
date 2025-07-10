@@ -48,6 +48,13 @@ export function AuthProvider({
     });
   };
 
+  const zeroAuth = async (error?: "invalid-token") => {
+    if (error) {
+      await supabase.auth.refreshSession();
+    }
+    return session?.access_token;
+  };
+
   const value = useMemo(
     () => ({
       session,
@@ -55,16 +62,10 @@ export function AuthProvider({
       loading,
       signOut,
       signInWithGitHub,
+      zeroAuth,
     }),
     [session, user, loading]
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
-}
-
-export async function zeroAuth(error?: "invalid-token") {
-  if (error) {
-    await supabase.auth.refreshSession();
-  }
-  return (await supabase.auth.getSession())?.data?.session?.access_token;
 }

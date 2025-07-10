@@ -3,7 +3,6 @@ import { schema } from "./schema";
 import { useMemo } from "react";
 import { useRouter } from "@tanstack/react-router";
 import { useAuth } from "../auth/useAuth";
-import { zeroAuth } from "../auth";
 import { createMutators } from "./mutators";
 
 const serverURL = import.meta.env.VITE_PUBLIC_SERVER;
@@ -17,7 +16,7 @@ if (!serverURL) {
 
 export function ZeroInit({ children }: { children: React.ReactNode }) {
   const router = useRouter();
-  const { session } = useAuth();
+  const { session, zeroAuth } = useAuth();
 
   const opts = useMemo(() => {
     return {
