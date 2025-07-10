@@ -15,10 +15,10 @@ export default function Header({ user }: Readonly<HeaderProps>) {
       <div className="header-content">
         <h1>
           <img
-            src={import.meta.env.BASE_URL + "/logo.png"}
+            src={import.meta.env.BASE_URL + "logo.png"}
             alt="Bleater Logo"
             className="twitter-logo"
-          />
+          />{" "}
           Bleater
         </h1>
         <div className="user-info">
