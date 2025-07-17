@@ -1,6 +1,6 @@
 import { useEffect, useState, useMemo } from "react";
 import type { User, Session } from "@supabase/supabase-js";
-import { supabase } from "./supabase";
+import { supabase } from "../supabase";
 import { AuthContext } from "./authContext";
 import { useRouter } from "@tanstack/react-router";
 
@@ -60,4 +60,11 @@ export function AuthProvider({
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+}
+
+export async function zeroAuth(error?: "invalid-token") {
+  if (error) {
+    await supabase.auth.refreshSession();
+  }
+  return (await supabase.auth.getSession())?.data?.session?.access_token;
 }

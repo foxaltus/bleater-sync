@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect } from "react";
-import { useAuth } from "../lib/useAuth";
+import { useAuth } from "../lib/auth/useAuth";
 import "../routes/index.css"; // Reusing the styles
 
 export const Route = createFileRoute("/auth/login")({

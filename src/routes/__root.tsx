@@ -8,6 +8,7 @@ import {
 } from "@tanstack/react-router";
 import { AuthProvider } from "../lib/auth";
 import "./__root.css";
+import { ZeroInit } from "../lib/zero/zero-init";
 
 export const Route = createRootRoute({
   head: () => ({
@@ -51,7 +52,9 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
       <body>
         {/* Wrap children in AuthProvider to provide authentication context */}
         <AuthProvider>
-          <div id="root">{children}</div>
+          <ZeroInit>
+            <div id="root">{children}</div>
+          </ZeroInit>
         </AuthProvider>
         <Scripts />
       </body>
