@@ -57,7 +57,7 @@ export type Post = Row<typeof schema.tables.post>;
 export type Like = Row<typeof schema.tables.likes>;
 export type Profile = Row<typeof schema.tables.profiles>;
 
-type AuthData = {
+export type AuthData = {
   // The logged-in user.
   sub: string;
 };
