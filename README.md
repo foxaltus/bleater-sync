@@ -18,8 +18,7 @@ A Twitter-like microblogging application where users can scream angry messages, 
 ### Frontend
 
 - **React 19.1** with TypeScript for the UI
-- **Vite** for fast development and optimized builds
-- **TanStack Router** for type-safe routing
+- **TanStack Start** for type-safe routing and server functions
 - **Rocicorp Zero** for local-first data sync and state management
 - Custom styling
 
