@@ -1,6 +1,7 @@
 import { createFileRoute, useRouter } from "@tanstack/react-router";
 import { useAuth } from "../lib/auth/useAuth";
 import "./index.css";
+import PostList from "../components/PostList";
 
 export const Route = createFileRoute("/")({
   component: Home,
@@ -92,7 +93,7 @@ function Home() {
       <main>
         <div className="posts-container">
           <h2>Recent Bleats</h2>
-          <div className="no-posts">No posts yet. Be the first to post!</div>
+          <PostList />
         </div>
       </main>
     </div>

@@ -7,6 +7,7 @@ import {
   table,
   type ExpressionBuilder,
   type PermissionsConfig,
+  type Row,
 } from "@rocicorp/zero";
 
 const post = table("post")
@@ -52,6 +53,9 @@ export const schema = createSchema({
 });
 
 export type Schema = typeof schema;
+export type Post = Row<typeof schema.tables.post>;
+export type Like = Row<typeof schema.tables.likes>;
+export type Profile = Row<typeof schema.tables.profiles>;
 
 type AuthData = {
   // The logged-in user.
@@ -67,6 +71,16 @@ export const permissions = definePermissions<AuthData, Schema>(schema, () => {
 
   return {
     post: {
+      row: {
+        select: [allowIfLoggedIn],
+      },
+    },
+    profiles: {
+      row: {
+        select: [allowIfLoggedIn],
+      },
+    },
+    likes: {
       row: {
         select: [allowIfLoggedIn],
       },
