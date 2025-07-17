@@ -3,6 +3,7 @@ import { useAuth } from "../lib/auth/useAuth";
 import "./index.css";
 import PostList from "../components/PostList";
 import Header from "../components/Header";
+import PostCreation from "../components/PostCreation";
 
 export const Route = createFileRoute("/")({
   component: Home,
@@ -35,6 +36,7 @@ function Home() {
     <div className="dashboard">
       <Header user={user} />
       <main>
+        <PostCreation user={user} />
         <div className="posts-container">
           <h2>Recent Bleats</h2>
           <PostList />
